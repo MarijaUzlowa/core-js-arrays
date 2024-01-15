@@ -569,15 +569,10 @@ function propagateItemsByPositionIndex(arr) {
  *    shiftArray([10, 20, 30, 40, 50], -3) => [40, 50, 10, 20, 30]
  */
 function shiftArray(arr, n) {
-  if (arr.length === 0) {
-    return arr;
+  if (n > 0) {
+    return arr.slice(-n).concat(arr.slice(0, arr.length - n));
   }
-
-  const shifted =
-    n >= 0
-      ? arr.slice(-n).concat(arr.slice(0, -n))
-      : arr.slice(n).concat(arr.slice(0, n));
-  return shifted;
+  return arr.slice(-n, arr.length).concat(arr.slice(0, -n));
 }
 
 /**
