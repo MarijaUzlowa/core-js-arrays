@@ -632,13 +632,11 @@ function sortDigitNamesByNumericOrder(arr) {
  *
  */
 function swapHeadAndTail(arr) {
-  const middle = Math.floor(arr.length / 2);
-  const head = arr.slice(0, middle);
-  const tail = arr.slice(-middle);
-
-  return arr.length % 2 === 0
-    ? [...tail, ...arr.slice(middle, -middle), ...head]
-    : [...tail, arr[middle], ...arr.slice(middle + 1), ...head];
+  if (arr.length < 2) return arr;
+  return arr
+    .slice(-arr.length / 2)
+    .concat(arr.length % 2 ? arr[Math.floor(arr.length / 2)] : [])
+    .concat(arr.slice(0, arr.length / 2));
 }
 
 module.exports = {
